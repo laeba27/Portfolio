@@ -2,25 +2,32 @@
 import { cn } from "../Utils/cn";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+
 import { useState } from "react";
 
 export const HoverEffect = ({
   items,
   className,
+}: {
+  items: {
+    title: string;
+    description: string;
+    image: string;
+  }[];
+  className?: string;
 }) => {
-  let [hoveredIndex, setHoveredIndex] = useState(null);
+  let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    
     <div
       className={cn(
-        "grid grid-cols-2 md:grid-cols-3 bg  lg:grid-cols-4  py-10",
+        "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3  py-10",
         className
       )}
     >
       {items.map((item, idx) => (
         <div
-          key={idx}
+          key={item?.title}
           className="relative group  block p-2 h-full w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
@@ -42,9 +49,15 @@ export const HoverEffect = ({
               />
             )}
           </AnimatePresence>
-          <Card>
-            <CardDescription>{item.image}</CardDescription>
+          <Card >
+            <Image
+            alt="image"
+            src={item.image}
+            width={80}
+            height={80}
+             />
             <CardTitle>{item.title}</CardTitle>
+         
           </Card>
         </div>
       ))}
@@ -55,15 +68,18 @@ export const HoverEffect = ({
 export const Card = ({
   className,
   children,
+}: {
+  className?: string;
+  children: React.ReactNode;
 }) => {
   return (
     <div
       className={cn(
-        "rounded-2xl h-full w-full p-4 overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20",
+        "rounded-2xl flex items-center justify-center h-full w-full p-4 overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20",
         className
       )}
     >
-      <div className="relative z-50 flex items-center justify-center flex-col">
+      <div className="relative z-50">
         <div className="p-4">{children}</div>
       </div>
     </div>
@@ -72,9 +88,12 @@ export const Card = ({
 export const CardTitle = ({
   className,
   children,
+}: {
+  className?: string;
+  children: React.ReactNode;
 }) => {
   return (
-    <h4 className={cn("text-zinc-100 font-bold tracking-wide mt-4 text-center", className)}>
+    <h4 className={cn("text-zinc-100 font-bold text-center tracking-wide mt-4", className)}>
       {children}
     </h4>
   );
@@ -82,17 +101,18 @@ export const CardTitle = ({
 export const CardDescription = ({
   className,
   children,
+}: {
+  className?: string;
+  children: React.ReactNode;
 }) => {
   return (
-    <Image src={children}
-      width={200}
-      height={200}
-      alt=""
+    <p
       className={cn(
-        "object-contain h-[100px] w-[100px]",
+        "mt-8 text-zinc-400 tracking-wide leading-relaxed text-sm",
         className
       )}
-    />
-
+    >
+      {children}
+    </p>
   );
 };
