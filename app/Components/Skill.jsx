@@ -47,6 +47,10 @@ export const skill = [
     {
         title: "Figma",
         image: "https://img.icons8.com/color/96/000000/figma--v1.png"
+    },
+    {
+        title: "Firebase",
+        image: "https://img.icons8.com/color/96/000000/firebase.png"
     }
 ];
 

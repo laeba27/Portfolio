@@ -4,6 +4,9 @@ import { motion, MotionValue } from "framer-motion";
 import React from "react";
 import { HoverBorderGradient } from "../_Ui/hover-border-gradient";
 
+import  { useRef } from 'react';
+
+
 const transition = {
   duration: 0,
   ease: "linear",
@@ -21,7 +24,14 @@ export const GoogleGeminiEffect = ({
   className?: string;
 }) => {
   const openResume = () => {
-    window.open("/Laebaresume.pdf", "_blank");
+    window.open("/resume.pdf", "_blank");
+  };
+  const footerRef = useRef(null);
+
+  const scrollToFooter = () => {
+    if (footerRef.current) {
+      footerRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
   };
   return (
     <div className={cn("sticky top-40", className)}>
@@ -46,13 +56,15 @@ export const GoogleGeminiEffect = ({
             <span>My Resume</span>
           </HoverBorderGradient>
 
-          <HoverBorderGradient
+<HoverBorderGradient
             containerClassName="rounded-full"
             as="button"
             className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
           >
             <span>Get in Touch</span>
           </HoverBorderGradient>
+        
+          
         </div>
       </div>
       <svg

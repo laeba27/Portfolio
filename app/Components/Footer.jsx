@@ -1,73 +1,116 @@
 "use client"
 import React from "react";
 import { IoLogoLinkedin } from "react-icons/io";
+import { useState } from 'react';
 function Footer() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData({ ...formData, [id]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrorMessage('');
+    setSuccessMessage('');
+
+    try {
+      const response = await fetch('/api/sendEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setSuccessMessage('Enquiry sent successfully!');
+        setFormData({ name: '', email: '', phone: '', message: '' });
+      } else {
+        setErrorMessage(result.error || 'Failed to send enquiry.');
+      }
+    } catch (error) {
+      console.error('Error sending enquiry:', error);
+      setErrorMessage('Failed to send enquiry.');
+    }
+  };
+
   return (
     <footer className="bg-black lg:grid lg:grid-cols-5 px-8 ">
-      <div className=" bg-black p-8 relative block h-32 lg:col-span-2 lg:h-full">
-        <h2 className="text-white font-bold text-3xl mb-4">Get in Touch</h2>
-        <form action="#" className="space-y-4 ">
+      <div className="bg-black p-8 relative block h-32 lg:col-span-2 lg:h-full">
+      <h2 className="text-white font-bold text-3xl mb-4">Get in Touch</h2>
+      {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+      {successMessage && <p className="text-green-500">{successMessage}</p>}
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <label className="sr-only" htmlFor="name">Name</label>
+          <input
+            className="w-full bg-black rounded-lg border border-gray-200 p-3 text-sm"
+            placeholder="Name"
+            type="text"
+            id="name"
+            value={formData.name}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>
-            <label className="sr-only" htmlFor="name">
-              Name
-            </label>
+            <label className="sr-only" htmlFor="email">Email</label>
             <input
               className="w-full bg-black rounded-lg border border-gray-200 p-3 text-sm"
-              placeholder="Name"
-              type="text"
-              id="name"
+              placeholder="Email address"
+              type="email"
+              id="email"
+              value={formData.email}
+              onChange={handleChange}
             />
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div>
-              <label className="sr-only" htmlFor="email">
-                Email
-              </label>
-              <input
-                className="w-full  bg-black rounded-lg border border-gray-200 p-3 text-sm"
-                placeholder="Email address"
-                type="email"
-                id="email"
-              />
-            </div>
-
-            <div>
-              <label className="sr-only" htmlFor="phone">
-                Phone
-              </label>
-              <input
-                className="w-full  bg-black rounded-lg border border-gray-200 p-3 text-sm"
-                placeholder="Phone Number"
-                type="tel"
-                id="phone"
-              />
-            </div>
-          </div>
-
           <div>
-            <label className="sr-only" htmlFor="message">
-              Message
-            </label>
-
-            <textarea
-              className="w-full  bg-black rounded-lg border border-gray-200 p-3 text-sm"
-              placeholder="Message"
-              rows="8"
-              id="message"
-            ></textarea>
+            <label className="sr-only" htmlFor="phone">Phone</label>
+            <input
+              className="w-full bg-black rounded-lg border border-gray-200 p-3 text-sm"
+              placeholder="Phone Number"
+              type="tel"
+              id="phone"
+              value={formData.phone}
+              onChange={handleChange}
+            />
           </div>
+        </div>
 
-          <div className="mt-4">
-            <button
-              type="submit"
-              className="inline-block  w-full rounded-lg border border-white bg-black px-5 py-3 font-medium text-white sm:w-auto"
-            >
-              Send Enquiry
-            </button>
-          </div>
-        </form>
-      </div>
+        <div>
+          <label className="sr-only" htmlFor="message">Message</label>
+          <textarea
+            className="w-full bg-black text-white rounded-lg border border-gray-200 p-3 text-sm"
+            placeholder="Message"
+            rows="8"
+            id="message"
+            value={formData.message}
+            onChange={handleChange}
+          ></textarea>
+        </div>
+
+        <div className="mt-4">
+          <button
+            type="submit"
+            className="inline-block w-full rounded-lg border border-white bg-black px-5 py-3 font-medium text-white sm:w-auto"
+          >
+            Send Enquiry
+          </button>
+        </div>
+      </form>
+    </div>
       <div className="px-4 py-16 relative block sm:px-6 lg:col-span-3 lg:px-8">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
           <div>
