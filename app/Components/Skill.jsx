@@ -45,9 +45,22 @@ export const skill = [
     },
    
     {
+        title: "Node.js",
+        image: "https://img.icons8.com/?size=100&id=hsPbhkOH4FMe&format=png&color=000000"
+    },
+    {
+        title: "Mongo db",
+        image: "https://img.icons8.com/?size=100&id=bosfpvRzNOG8&format=png&color=000000"
+    },
+    {
         title: "Figma",
         image: "https://img.icons8.com/color/96/000000/figma--v1.png"
     },
+    {
+        title: "Express js",
+        image: "https://img.icons8.com/?size=100&id=z228V7A9QyTv&format=png&color=000000"
+    },
+    
     {
         title: "Firebase",
         image: "https://img.icons8.com/color/96/000000/firebase.png"
