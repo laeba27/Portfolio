@@ -8,6 +8,7 @@ import project2 from "../../public/meeting.png";
 import project3 from "../../public/UIForge.png";
 import { motion } from "framer-motion";
 import { LinkPreview } from "../_Ui/link-preview";
+import { HoverBorderGradient } from "../_Ui/hover-border-gradient";
 
 function Projects() {
   return (
@@ -37,6 +38,38 @@ This application is a web platform allowing users to log in, schedule meetings o
         </LinkPreview>{" "}
         to view Meeting Scheduler
       </p>
+      <div className="flex gap-3 flex-wrap">
+      <HoverBorderGradient
+            containerClassName="rounded-full"
+            as="button"
+            className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+          >
+            <span>Next.js</span>
+          </HoverBorderGradient>
+          <HoverBorderGradient
+            containerClassName="rounded-full"
+            as="button"
+            className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+          >
+            <span>Firebase</span>
+          </HoverBorderGradient>
+          <HoverBorderGradient
+            containerClassName="rounded-full"
+            as="button"
+            className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+          >
+            <span>Kinde</span>
+          </HoverBorderGradient>
+          <HoverBorderGradient
+            containerClassName="rounded-full"
+            as="button"
+            className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+          >
+            <span>Tailwind</span>
+          </HoverBorderGradient>
+         
+      </div>
+     
 {/* <button className="rounded-full pl-4 pr-1 py-1 text-white flex items-center space-x-1 bg-black mt-4 text-xs font-bold dark:bg-zinc-800">
   <span>Buy now </span>
   <span className="bg-zinc-700 rounded-full text-[0.6rem] px-2 py-0 text-white">
@@ -59,7 +92,7 @@ This application is a web platform allowing users to log in, schedule meetings o
 Picture Mind
 </p>
 <p className="text-sm text-neutral-600 dark:text-neutral-400">
-PicturaMind is a cutting-edge AI-powered image generation application designed to create stunning visuals from user prompts. The platform leverages the Together AI API to interpret user inputs and generate high-quality images, making it a perfect tool for creative professionals, marketers, and enthusiasts seeking custom visuals.
+PicturaMind is an innovative AI-powered image generation app that utilizes the Together AI API to create stunning visuals from user prompts.
 </p>
 <p className="py-3 text-gray-200">
         <LinkPreview url="https://ai-image-generator-phi-seven.vercel.app/" className="font-bold underline-offset-2">
@@ -67,12 +100,45 @@ PicturaMind is a cutting-edge AI-powered image generation application designed t
         </LinkPreview>{" "}
         to view Meeting Scheduler
       </p>
-{/* <button className="rounded-full pl-4 pr-1 py-1 text-white flex items-center space-x-1 bg-black mt-4 text-xs font-bold dark:bg-zinc-800">
-  <span>Buy now </span>
-  <span className="bg-zinc-700 rounded-full text-[0.6rem] px-2 py-0 text-white">
-    $100
-  </span>
-</button> */}
+      <div className="flex gap-3 flex-wrap">
+      <HoverBorderGradient
+            containerClassName="rounded-full"
+            as="button"
+            className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+          >
+            <span>Next.js</span>
+          </HoverBorderGradient>
+          <HoverBorderGradient
+            containerClassName="rounded-full"
+            as="button"
+            className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+          >
+            <span>Edge functions</span>
+          </HoverBorderGradient>
+          <HoverBorderGradient
+            containerClassName="rounded-full"
+            as="button"
+            className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+          >
+            <span>Together AI</span>
+          </HoverBorderGradient>
+          <HoverBorderGradient
+            containerClassName="rounded-full"
+            as="button"
+            className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+          >
+            <span>Helicone</span>
+          </HoverBorderGradient>
+          <HoverBorderGradient
+            containerClassName="rounded-full"
+            as="button"
+            className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+          >
+            <span>Upstash Redis</span>
+          </HoverBorderGradient>
+         
+      </div>
+
 </BackgroundGradient>
 
 </div>
@@ -97,7 +163,24 @@ I've developed a platform tailored for UI designers and developers, featuring a 
         </LinkPreview>{" "}
         to view Meeting Scheduler
       </p>
-
+      <div className="flex gap-3 flex-wrap">
+      <HoverBorderGradient
+            containerClassName="rounded-full"
+            as="button"
+            className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+          >
+            <span>React.js</span>
+          </HoverBorderGradient>
+      
+          <HoverBorderGradient
+            containerClassName="rounded-full"
+            as="button"
+            className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+          >
+            <span>Tailwind</span>
+          </HoverBorderGradient>
+         
+      </div>
 
 {/* <button className="rounded-full pl-4 pr-1 py-1 text-white flex items-center space-x-1 bg-black mt-4 text-xs font-bold dark:bg-zinc-800">
   <span>Buy now </span>
