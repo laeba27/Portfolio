@@ -1,11 +1,8 @@
 "use client";
 import { cn } from "../Utils/cn";
 import { motion, MotionValue } from "framer-motion";
-import React from "react";
+import React, { useRef } from "react";
 import { HoverBorderGradient } from "../_Ui/hover-border-gradient";
-
-import  { useRef } from 'react';
-
 
 const transition = {
   duration: 0,
@@ -26,11 +23,12 @@ export const GoogleGeminiEffect = ({
   const openResume = () => {
     window.open("/resume.pdf", "_blank");
   };
-  const footerRef = useRef(null);
+  
+  const footerRef = useRef<HTMLDivElement>(null);
 
   const scrollToFooter = () => {
     if (footerRef.current) {
-      footerRef.current.scrollIntoView({ behavior: 'smooth' });
+      footerRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
   return (
