@@ -327,7 +327,7 @@ function Footer() {
             </ul>
 
             <p className="mt-8 text-xs text-white sm:mt-0">
-              &copy; 2024. Company Name. All rights reserved.
+              &copy; made by laeba 
             </p>
           </div>
         </div>
